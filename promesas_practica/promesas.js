@@ -2,7 +2,7 @@ console.log('Hola mundo')
 
 const goodbyePromise = () => {
     return new Promise((resolve,reject) => {
-        if(true) {
+        if(false) {
             setTimeout( () => {
                 resolve('BYE BYE!');
             },1000);
@@ -13,3 +13,4 @@ const goodbyePromise = () => {
 }
 goodbyePromise()
 .then(response => console.log('Respuesta es:',response))
+.catch(error => console.log('Has motado el lio',error))
