@@ -1,17 +1,32 @@
 console.log('Hola mundo')
+const helloPromise = () => {
+    return new Promise((resolve,reject) => {
+    if(true) {
+        setTimeout( () => {
+            resolve('Hello');
+        },1000);
+    } else {
+        reject('Depierta');
+    } 
+});
+};
 
 const goodbyePromise = () => {
     return new Promise((resolve,reject) => {
         if(true) {
             setTimeout( () => {
                 resolve('BYE BYE!');
-            },1000);
+            },4000);
         }else {
             reject('Now way!');
         }
-    })
-}
-goodbyePromise()
+    });
+};
+
+Promise.all([helloPromise(),goodbyePromise()])
 .then(response => console.log('Respuesta es:',response))
-.then(response => console.log('Vaya lo has liado parda !!!!',response))
-.catch(error => console.log('Has motado el lio',error))
+.catch(error => console.log('Se ha producido un error',error))
+
+Promise.race([helloPromise(),goodbyePromise()])
+    .then(response => console.log('La respuesta es',response))
+    .catch(error => console.log('Estas disparado:',error))
